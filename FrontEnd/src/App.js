@@ -17,7 +17,7 @@ import Header from './components/Header'
 function App() {
   return (
     <Router>
-      <Header/>
+      <Header/> 
       {/* ((Switch)) to don't match errorPage in each route */}
       <Switch>
       {/* ((exact)) to don't match homePage in each route */}
