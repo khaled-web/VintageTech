@@ -6,6 +6,7 @@ import React, {
  useEffect,
  useState
 } from 'react'
+import {data} from '../utils/FakeData'
 
 export const ProductContext = React.createContext()
 
@@ -14,8 +15,14 @@ export const ProductContext = React.createContext()
 
 export default function ProductProvider({children}) {
   const [loading, setLoading] = useState(false)
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState(data)
   const [featured, setFeatured] = useState([])
+
+  useEffect(()=>{ 
+    setLoading(true)
+    console.log(data)
+    setLoading(false)
+  })
   return (
     <ProductContext.Provider value={{loading, products, featured}}>
       {children}
