@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  UseProductContext
+  UseCartContext
 } from '../context/cart'
 import EmptyCart from '../components/Cart/EmptyCart'
 import CartItem from '../components/Cart/CartItem'
@@ -10,7 +10,7 @@ import {Link} from 'react-router-dom'
 
 export default function Cart() {
   let user = false
-  const {cart, total, item} = UseProductContext()
+  const {cart, total, item} = UseCartContext()
   //return-emptyCart
   if(cart.length === 0){
     return <EmptyCart/>
