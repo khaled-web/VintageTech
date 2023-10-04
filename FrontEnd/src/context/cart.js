@@ -36,11 +36,26 @@ export default function CartProvider({children}) {
 
 
  //removeItem
- const removeItem = id=>{}
+ const removeItem = id=>{
+  setCart([...cart].filter((i)=>i.id !==id))
+ }
  //increaseAmount
- const increaseAmount = id=>{}
+ const increaseAmount = id=>{
+  setCart([...cart].map((i)=>{
+    return i.id === id ? {...i, amount:i.amount+1}:{...i}
+  }))
+ }
  //decreaseAmount
- const decreaseAmount = id=>{}
+ const decreaseAmount = (id,amount)=>{
+  if(amount === 1){
+    setCart([...cart].filter((i)=>i.id !==id))
+  }
+  else{
+    setCart([...cart].map((i)=>{
+      return i.id === id?{...i, amount:i.amount-1}:{...i}
+    }))
+  }
+ }
  //addToCart
  const addToCart = product=>{}
  //clearCart
