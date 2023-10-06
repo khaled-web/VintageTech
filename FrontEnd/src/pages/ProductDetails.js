@@ -5,9 +5,9 @@ import {
   UseProductContext
 } from '../context/products'
 //cartContext
-// import {
-//   UseCartContext
-// } from '../context/products'
+import {
+  UseCartContext
+} from '../context/cart'
 import {useHistory} from 'react-router-dom'
 import Loading from '../components/Loading'
 
@@ -16,6 +16,8 @@ export default function ProductDetails() {
   const {id} = useParams()
   const history = useHistory()
   const {products} =UseProductContext()
+  //fromCartContext
+  const {addToCart}=UseCartContext()
   const product = products.find(i=>i.id === parseInt(id))
   if(products.length === 0){
     return <Loading/>
@@ -31,6 +33,7 @@ export default function ProductDetails() {
           <p>{description }</p>
           <button className="btn btn-primary btn-block" onClick={()=>{
             //add to cart
+            addToCart(product)
             history.push('/cart')
           }}>add to cart</button>
         </article>

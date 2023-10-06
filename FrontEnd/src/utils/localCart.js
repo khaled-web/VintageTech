@@ -6,21 +6,21 @@ import DroneImg from '../assets/Image/15-Drone.jpg'
 
 
 export default [{
-    id: 1,
+    id: 2,
     title: "laser Printer",
     price: 80.99,
     image: laserImage,
     amount: 3
   },
   {
-    id: 2,
+    id: 5,
     title: "laptop",
     price: 170.99,
     image: laptopImage,
     amount: 5
   },
   {
-    id: 3,
+    id: 15,
     title: "Drone",
     price: 129.99,
     image: DroneImg,

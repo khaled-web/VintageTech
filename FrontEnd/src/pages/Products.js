@@ -3,7 +3,7 @@ import {UseProductContext} from '../context/products'
 import Loading from '../components/Loading'
 import ProductList from '../components/Products/ProductList'
 export default function Products() {
-  const {loading, products, featured} = UseProductContext()
+  const {loading, products} = UseProductContext()
 
   if(loading){
     return <Loading/>
