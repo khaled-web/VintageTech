@@ -24,15 +24,18 @@ export default function ProductProvider({children}) {
 
   useEffect(()=>{ 
     setLoading(true)
-    const featured = featuredProducts(data)
-    //getDataFrom"Strapi-server"
     const response = axios.get(`${url}/api/products?populate=*`).then((i)=>{
       console.log(i.data.data)
+      setProducts(i.data.data)
+      const featured = featuredProducts(i.data.data)
+      setFeatured(featured)
+      setLoading(false)
+      return(()=>{})
     })
-
-    setProducts(data)
-    setFeatured(featured)
-    setLoading(false)
+    // const featured = featuredProducts(data)
+    // setProducts(data)
+    // setFeatured(featured)
+    // setLoading(false)
   },[])
   return (
     <ProductContext.Provider value={{loading, products, featured}}>
