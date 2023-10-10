@@ -8,6 +8,7 @@ export default function ProductList({title, products}) {
       <div className="products-center">
         {
           products.map((i)=>{
+            // console.log(i.id)
             return <Product key={i.id} {...i}/>
           })
         }

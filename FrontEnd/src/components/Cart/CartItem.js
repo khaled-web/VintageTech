@@ -3,12 +3,18 @@ import {FaAngleUp, FaAngleDown} from 'react-icons/fa'
 import {
   UseCartContext
 } from '../../context/cart'
-export default function CartItem({id,image,title,price,amount}) {
+import localUrl from '../../utils/URL'
+
+
+
+
+export default function CartItem({id,url,title,price,amount}) {
+  
   //cart context
   const {removeItem,increaseAmount,decreaseAmount} = UseCartContext()
   return(
     <article className="cart-item">
-      <img src={image} alt={title}/>
+      <img src={`${localUrl}${url}`} alt={title}/>
       <div className="">
         <h4>{title}</h4>
         <h5>${price}</h5>

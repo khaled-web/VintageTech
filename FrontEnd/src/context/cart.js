@@ -65,14 +65,16 @@ export default function CartProvider({children}) {
  }
  //addToCart
  const addToCart = product=>{
- const {id, image, price, title} = product
+ const {id} = product
+  const{image, price, title} = product.attributes
+  const url = image.data[0].attributes.url
  const item  = [...cart].find((i)=>i.id === id)
  if(item){
   increaseAmount(id)
   return
  }
  else{
-  const newItem = {id, image, price, title, amount:1}
+  const newItem = {id, url, price, title, amount:1}
   const newCart = [...cart, newItem]
   setCart(newCart)
  }

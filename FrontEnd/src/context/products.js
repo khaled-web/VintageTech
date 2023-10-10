@@ -24,10 +24,14 @@ export default function ProductProvider({children}) {
 
   useEffect(()=>{ 
     setLoading(true)
-    setProducts(data)
-    const newFeatured = featuredProducts(data)
-    setFeatured(newFeatured)
-    setLoading(false)
+    axios.get(`${url}/api/products?populate=*`).then((i)=>{
+      // console.log(i.data.data)
+      setProducts(i.data.data)
+      const newFeatured = featuredProducts(i.data.data)
+      setFeatured(newFeatured)
+      setLoading(false)
+      return(()=>{})
+    })
   },[])
   return (
     <ProductContext.Provider value={{loading, products, featured}}>
