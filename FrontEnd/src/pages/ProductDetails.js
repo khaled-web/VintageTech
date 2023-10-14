@@ -10,7 +10,6 @@ import {
 } from '../context/cart'
 import {useHistory} from 'react-router-dom'
 import Loading from '../components/Loading'
-import localUrl from '../utils/URL'
 
 
 export default function ProductDetails() {
@@ -24,11 +23,10 @@ export default function ProductDetails() {
     return <Loading/>
   }
   else{
-    const {image, title, price, description} = product.attributes
-    const url = image.data[0].attributes.url
+    const {deployImage, title, price, description} = product
     return(
       <section className="single-product">
-        <img src={`${localUrl}${url}`} alt={title} className="single-product-image"/>
+        <img src={deployImage} alt={title} className="single-product-image"/>
         <article>
           <h1>{title}</h1>
           <h2>${price}</h2>

@@ -8,13 +8,13 @@ import localUrl from '../../utils/URL'
 
 
 
-export default function CartItem({id,url,title,price,amount}) {
+export default function CartItem({id,deployImage,title,price,amount}) {
   
   //cart context
   const {removeItem,increaseAmount,decreaseAmount} = UseCartContext()
   return(
     <article className="cart-item">
-      <img src={`${localUrl}${url}`} alt={title}/>
+      <img src={deployImage} alt={title}/>
       <div className="">
         <h4>{title}</h4>
         <h5>${price}</h5>
