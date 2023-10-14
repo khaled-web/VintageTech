@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 
 //strapi-function
-
+import loginUser from '../strapi/loginUser'
+import register from '../strapi/registerUser'
 //handle user
 import {useHistory} from 'react-router-dom'
 
@@ -14,14 +15,37 @@ export default function Login() {
   //state values
   const [email, setEmail]=useState('')
   const [password, setPassword]=useState('')
-  const [username, setUsername]=useState('')
-  const [isMember, setIsMember]=useState(false)
+  const [username, setUsername]=useState('default')
+  const [isMember, setIsMember]=useState(true)
   
-  let isEmpty =  false
+  let isEmpty =  !email || !password || !username
 
-  const toggleMember = ()=>{}
+  const toggleMember = ()=>{
+    setIsMember((prevMember)=>{
+      let isMember = !prevMember
+      isMember?setUsername('default'):setUsername('')
+      return isMember
+    })
+  }
 
-  const handleSubmit = async (e)=>{}
+  const handleSubmit = async (e)=>{
+    //alert
+    e.preventDefault()
+    let response;
+    if(isMember){
+      //response = await loginUser
+    }
+    else{
+      //response = await registerUser
+    }
+
+    if(response){
+      //
+    }
+    else{
+      //show alert
+    }
+  }
   return(
     <section className="form section">
       <h2 className="section-title">
@@ -54,9 +78,23 @@ export default function Login() {
           }}/>
         </div>
           )}
-          {/* endOfSingleInput */}
-
-
+        {/* endOfSingleInput */}
+        {isEmpty&&(
+          <p className="form-empty">
+            Please Fill Out All Form Fields
+          </p>
+        )}
+        {/* submit btn */}
+        {!isEmpty&&(
+          <button type="submit" className="btn btn-block btn-primary" onClick={handleSubmit}>submit</button>
+        )}
+        {/* registerLink */}
+        <p className="register-link">
+          {isMember?"need to register":"already a member"}
+          <button type="button" onClick={toggleMember}>
+            click here
+          </button>
+        </p>
       </form>
     </section>
     )
