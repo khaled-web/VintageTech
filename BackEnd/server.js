@@ -1,6 +1,7 @@
 //..............
 //importingData
 //..............
+const cors = require('cors')
 //express
 const express = require('express');
 const app = express()
@@ -30,6 +31,8 @@ const authenticateUser = require('./middleware/auth-JWT.js')
 if (process.env.NODE_ENV !== 'production') {
  app.use(morgan('dev'))
 }
+//cors-fetchingData
+app.use(cors())
 //usingData.jsonInPostman
 app.use(express.json())
 //GeneralRoute
