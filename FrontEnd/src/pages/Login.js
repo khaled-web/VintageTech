@@ -2,7 +2,7 @@ import React, {useState} from "react";
 
 //strapi-function
 import loginUser from '../strapi/loginUser'
-import register from '../strapi/registerUser'
+import registerUser from '../strapi/registerUser'
 //handle user
 import {useHistory} from 'react-router-dom'
 
@@ -36,11 +36,13 @@ export default function Login() {
       //response = await loginUser
     }
     else{
-      //response = await registerUser
+      response = await registerUser({email,password,username})
     }
 
     if(response){
       //
+      console.log('success')
+      console.log(response)
     }
     else{
       //show alert
